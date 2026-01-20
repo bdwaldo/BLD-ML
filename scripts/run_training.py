@@ -222,18 +222,18 @@ def main():
     except ValueError:
         test_auroc = float('nan')
 
-    print(f"\n📊 Test results - Loss: {test_loss:.4f}, Acc: {test_acc:.4f}, "
+    print(f"\n Test results - Loss: {test_loss:.4f}, Acc: {test_acc:.4f}, "
           f"P: {test_prec:.4f}, R: {test_rec:.4f}, "
           f"F1: {test_f1:.4f}, AUROC: {test_auroc:.4f}")
 
-    # 💾 Save test metrics to CSV
+    #Save test metrics to CSV
     test_metrics_path = f"outputs/test_metrics_{timestamp}.csv"
     with open(test_metrics_path, mode="w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["loss", "acc", "precision", "recall", "f1", "auroc"])
         writer.writerow([test_loss, test_acc, test_prec, test_rec, test_f1, test_auroc])
 
-    print(f"💾 Test metrics saved to {test_metrics_path}")
+    print(f"Test metrics saved to {test_metrics_path}")
 
 
 if __name__ == "__main__":
