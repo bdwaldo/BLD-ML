@@ -68,7 +68,7 @@ def train_1_binary(
     for epoch in range(num_epochs):
         # Scheduled unfreeze
         if unfreeze_at_epoch is not None and epoch == unfreeze_at_epoch:
-            print(f"🔓 Unfreezing last {num_unfreeze_blocks} backbone blocks at epoch {epoch}")
+            print(f"Unfreezing last {num_unfreeze_blocks} backbone blocks at epoch {epoch}")
             unfreeze_last_blocks(model, n_blocks=num_unfreeze_blocks, freeze_bn=freeze_backbone_bn)
 
             # Rebuild optimizer and scheduler to include new params
@@ -183,9 +183,9 @@ def train_1_binary(
         else:
             epochs_no_improve += 1
             if early_stopping_patience and epochs_no_improve >= early_stopping_patience:
-                print(f"⏹️ Early stopping at epoch {epoch+1}")
+                print(f"Early stopping at epoch {epoch+1}")
                 break
 
     torch.save(model.state_dict(), "final_model.pth")
-    print("✅ Final model weights saved to final_model.pth")
+    print("Final model weights saved to final_model.pth")
     return history
